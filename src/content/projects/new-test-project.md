@@ -8,9 +8,9 @@ blocks:
 - template: block-header
   style:
     media_position: Right
-    background_color: ''
-  heading: ''
-  pill_text: ''
+    background_color: "#AD4949"
+  heading: Heading
+  pill_text: Pill text
   background_image: ''
 - template: block-content
   heading: Heading
