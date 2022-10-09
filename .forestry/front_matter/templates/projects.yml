@@ -50,5 +50,6 @@ fields:
   label: SEO
 pages:
 - src/content/projects/golf-only.md
+- src/content/projects/new-test-project.md
 - src/content/projects/project-three.md
 - src/content/projects/test-project.md
