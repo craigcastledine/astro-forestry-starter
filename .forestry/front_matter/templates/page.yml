@@ -1,0 +1,48 @@
+---
+label: Page
+hide_body: true
+display_field: page_name
+fields:
+- name: published
+  type: boolean
+  default: true
+  label: Published
+- name: page_name
+  type: text
+  config:
+    required: false
+  label: Page name
+- name: uri
+  type: text
+  config:
+    required: true
+  label: URI
+  default: ''
+  description: Page uri <strong>without</strong> a leading or ending "<strong>/</strong>"
+    (ie. <strong>contact</strong>). Set '<strong>HOME</strong>' for the homepage.
+  showOnly:
+    value: true
+- name: blocks
+  type: blocks
+  label: Blocks
+  template_types:
+  - block-header
+  - block-content-media
+  - block-content
+  - block-projects
+  - block-faqs
+  - block-testimonials
+  - block-blog-posts
+  - block-pricing
+  - block-team
+  - block-contact-form
+  config:
+    min: 
+    max: 
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+pages:
+- src/content/pages/blog.md

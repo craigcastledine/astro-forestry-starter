@@ -1,0 +1,9 @@
+---
+label: Footer Section
+hide_body: true
+fields:
+- name: copyright_text
+  type: text
+  config:
+    required: false
+  label: Footer text

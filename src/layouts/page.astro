@@ -1,0 +1,81 @@
+---
+import NavigationSection from '../components/navigation-section.astro';
+import FooterSection from '../components/footer-section/index.astro';
+import { BlockContentMedia } from '../components/block-content-media';
+import { BlockContent } from '../components/block-content';
+import { BlockFaqs } from '../components/block-faqs';
+import { BlockHeader } from '../components/block-header';
+import { BlockPricing } from '../components/block-pricing';
+import { BlockProjects } from '../components/block-projects';
+import { BlockBlogPosts } from '../components/block-blog-posts';
+import { BlockTeam } from '../components/block-team';
+import { BlockTestimonials } from '../components/block-testimonials';
+import { BlockContactForm } from '../components/block-contact-form';
+
+import data from '../globals/settings.json';
+import '../styles/global.css';
+
+const mds = await Astro.glob('../content/**/*.md');
+
+const allProfiles = mds.filter(md => md.file.includes('/src/content/profiles/'));
+const allProjects = mds.filter(md => md.file.includes('/src/content/projects/'));
+const allBlogPosts = mds.filter(md => md.file.includes('/src/content/blog/'));
+const { content } = Astro.props;
+
+const pageTitle = content.frontmatter?.seo?.title ? `${content.frontmatter?.seo?.title} - ${data.company_name}` : data.company_name;
+
+---
+
+<html lang="en">
+  <head>
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={content.frontmatter?.seo?.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+  </head>
+
+  <body>
+      <NavigationSection uri={content.uri} />
+    <article class="article">
+    {content.frontmatter?.blocks?.map((item) => {
+      switch(item.template) {
+        case 'block-header':
+          return <BlockHeader content={item} />
+          break;
+        case 'block-content-media':
+          return <BlockContentMedia content={item} />
+          break;
+        case 'block-content':
+          return <BlockContent content={item} />
+          break;
+        case 'block-faqs':
+          return <BlockFaqs content={item} />
+          break;
+        case 'block-testimonials':
+          return <BlockTestimonials content={item} />
+          break;
+        case 'block-pricing':
+          return <BlockPricing content={item} />
+          break;
+        case 'block-team':
+          return <BlockTeam content={item} allProfiles={allProfiles} />
+          break;
+        case 'block-projects':
+          return <BlockProjects content={item} allProjects={allProjects} />
+          break;
+        case 'block-blog-posts':
+          return <BlockBlogPosts content={item} allBlogPosts={allBlogPosts} />
+          break;
+        case 'block-contact-form':
+          return <BlockContactForm />
+          break;
+        default:
+          return <p class="p-4 m-2 text-xl text-red-700 border border-red-300 bg-red-50">Block <strong>{item.template}</strong> missing from <strong>src/layouts/page.astro</strong></p>
+      }
+    })}
+    </article>
+
+    <FooterSection />
+  </body>
+</html>

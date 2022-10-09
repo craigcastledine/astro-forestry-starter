@@ -1,0 +1,17 @@
+---
+label: Settings
+hide_body: true
+display_field: name
+fields:
+- name: company_name
+  type: text
+  config:
+    required: true
+  label: Company name
+- name: email
+  type: text
+  config:
+    required: true
+  label: Email
+pages:
+- src/globals/settings.json

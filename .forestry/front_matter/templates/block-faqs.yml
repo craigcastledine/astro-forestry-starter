@@ -1,0 +1,27 @@
+---
+label: 'Block: Faqs'
+hide_body: true
+fields:
+- name: heading
+  type: text
+  config:
+    required: false
+  label: Heading
+- name: questions
+  type: field_group_list
+  fields:
+  - name: question
+    type: text
+    config:
+      required: false
+    label: Question
+  - name: answer
+    type: text
+    config:
+      required: false
+    label: Answer
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Questions

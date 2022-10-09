@@ -1,0 +1,16 @@
+---
+label: 'Block: Projects'
+hide_body: true
+fields:
+- name: projects
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: pages
+      section: projects
+      file: src/content/projects/project-one.md
+    options: []
+  label: Projects
