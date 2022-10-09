@@ -11,7 +11,7 @@ blocks:
     background_color: "#AD4949"
   heading: Heading
   pill_text: Pill text
-  background_image: ''
+  background_image: "/uploads/mercedes_header_190218_234948.webp"
 - template: block-content
   heading: Heading
   body: "<p>Eligendi at et ex explicabo delectus nihil dolore ut eum quibusdam quos
